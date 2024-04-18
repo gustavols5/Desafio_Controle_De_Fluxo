@@ -1,12 +1,6 @@
 import java.util.Scanner;
 
-class ParametrosInvalidosException extends Exception {
-    public ParametrosInvalidosException(String message){
-        super(message);
-    }
 
-
-}
 
 
 
@@ -21,7 +15,9 @@ public class Contador {
         System.out.println("Digite o segundo paramêtro:" );
         int num2 = digitaParametro();
 
-        contar(num1, num2);
+        try{contar(num1, num2);
+        }catch(ParametrosInvalidosException e){
+            System.out.println("O segundo parametro deve ser maior que o primeiro");        }
 
 
 
@@ -36,7 +32,7 @@ public class Contador {
 
     static void contar(int num1, int num2 ) throws ParametrosInvalidosException {
         if (num1 >= num2){
-            throw new ParametrosInvalidosException("O segundo parâmetro deve ser maior que o primeiro");
+            throw new ParametrosInvalidosException();
         }
             int quantidadeDeIteracoes = num2 - num1;
             for(int contador = 0; contador < quantidadeDeIteracoes; contador++){
